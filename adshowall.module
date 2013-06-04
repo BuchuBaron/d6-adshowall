@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Enhances the ad module to show a page of all adverts active on the site
+ *
+ */
+
+/**
+ * Implementation of hook_help().
+ */
+function adshowall_help($path, $arg) {
+  $output = '';
+  switch ($path) {
+    case 'admin/help#adshowall':
+      $output = '<p>'. t('A page of all active adverts.') .'</p>';
+      break;
+  }
+  return $output;
+}
+
+/**
+ * Implementation of hook_perm().
+ */
+function adshowall_perm() {
+  return array(
+    'view page of all active ads',
+  );
+}
+
+/**
+ * Implementation of hook_menu()
+ */
+function adshowall_menu() {
+  $items = array();
+  $items['ad/showall'] = array(
+    'title' => 'Advertisers Supporting our Club',
+    'page callback' => 'adshowall_page',
+    'access arguments' => array('view page of all active ads'),
+    'file' => 'adshowall.inc',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function adshowall_theme() {
+  return array(
+    'adshowall_page' => array(
+      'template' => 'adshowall-page',
+      'arguments' => array(
+        'ads' => NULL,
+      ),
+    ),
+  );
+}
+
+/* vim: set sw=2 et ias: */

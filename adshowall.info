@@ -1,0 +1,8 @@
+name = Ad show all active
+package = Ad
+dependencies[] = ad
+description = Enhances the ad module to show all the active adverts on a site, as another way of promoting your advertisers.
+core = 6.x
+version = "6.x-1.0"
+core = "6.x"
+project = "ad"
